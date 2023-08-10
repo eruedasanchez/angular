@@ -1,0 +1,9 @@
+<router-outlet></router-outlet>
+<app-header></app-header>
+<div class="grid">
+    <app-card *ngFor="let card of ArregloTarjetas"></app-card>
+</div>
+
+
+<!-- *ngFor="let card of ArregloTarjetas" me permite comunicar el arreglo ArregloTarjetas en el componente
+app-card -->

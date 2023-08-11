@@ -1,0 +1,28 @@
+<!-- Todas las clases aplicadas corresponden a bootstrap -->
+
+<!-- El objetivo de este ejercicio es que cuando haga click en el boton, me muestre el listado
+mientras que cuando vuelva a hacer click, oculte el mismo. Esto lo logramos usando la directiva *ngIf -->
+
+<div class="container mt-4">
+  <div class="row">
+    <h1>Listado de estudiantes</h1>
+    <button class="btn btn-primary col-2" (click)="mostrarOcultar()">Mostrar/Ocultar</button>
+  </div>
+  <br>
+  <table class="table" *ngIf="mostrar">
+    <thead>
+      <th>Nro</th>
+      <th>Nombre</th>
+      <th>Estado</th>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let estudiante of listadoDeEstudiantes; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{estudiante.nombre}}</td>
+        <td>{{estudiante.estado}}</td>
+      </tr>
+    </tbody>
+    <h3 *ngIf="listadoDeEstudiantes.length === 0">No hay registros para mostrar</h3>
+  </table>
+</div>
+

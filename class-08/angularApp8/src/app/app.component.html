@@ -1,0 +1,26 @@
+<!-- Todas las clases aplicadas corresponden a bootstrap -->
+
+<div class="container mt-4">
+  <div class="row">
+    <h1>Listado de estudiantes</h1>
+  </div>
+  <br>
+  <table class="table">
+    <thead>
+      <th>Nro</th>
+      <th>Nombre</th>
+      <th>Estado</th>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let estudiante of listadoDeEstudiantes; let i = index">
+        <!-- index (muestra la posicion en el arreglo del estudiante actual) es una directiva que viene con *ngFor-->
+        <!-- debe ser i+1, i++ no lo toma -->
+        <td>{{i+1}}</td>
+        <td>{{estudiante.nombre}}</td>
+        <td>{{estudiante.estado}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+

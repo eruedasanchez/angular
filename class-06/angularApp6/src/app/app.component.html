@@ -1,0 +1,14 @@
+<!-- Todas las clases agregadas corresponden a bootstrap -->
+
+<div class="container">
+  <div class="row">
+    La suma de 20 + 20 es igual a {{getSuma(20,20)}}
+    <br>
+    <input type="text" class="form-control" [placeholder]="textPlaceholder" [disabled]="deshabilitado">
+    <br>
+    <img [src]="img" alt="img" width="400px" height="400px">
+  </div>
+</div>
+
+<!-- Al ejecutar [placeholder]="textPlaceholder" hacemos viajar el 
+valor de la variable textPlaceholder a la propiedad del input placeholder -->

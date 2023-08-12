@@ -31,4 +31,12 @@ export class TareasComponent implements OnInit {
     this.nombreTarea="";
   }
 
+  eliminar(i:number){
+    this.listaTareas.splice(i,1);
+  }
+
+  actualizarTarea(tarea:Tarea, i:number){
+    this.listaTareas[i].estado = !tarea.estado;
+  }
+
 }

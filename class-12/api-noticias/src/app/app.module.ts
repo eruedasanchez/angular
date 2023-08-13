@@ -8,6 +8,8 @@ import { ListNewsComponent } from './components/list-news/list-news.component';
 import { FormComponent } from './components/form/form.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +22,12 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// Importamos HttpClientModule para poder ejecutar el servicio en news.service.ts

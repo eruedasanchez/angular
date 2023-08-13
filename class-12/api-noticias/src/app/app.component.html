@@ -1,0 +1,5 @@
+<app-navbar [titulo]="'App noticias'"></app-navbar>
+<div class="container">
+  <app-form (parametrosSeleccionados)="buscarNoticias($event)"></app-form>
+  <app-list-news></app-list-news>
+</div>

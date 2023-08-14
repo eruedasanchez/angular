@@ -7,11 +7,5 @@ import { Firestore } from '@angular/fire/firestore';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // title = 'tarjetaCredito';
-  
-  firestore: Firestore = inject(Firestore);
-
-  constructor() {
-
-  }
+  title = 'tarjetaCredito';
 }

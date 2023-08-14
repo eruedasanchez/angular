@@ -2,10 +2,10 @@
     <div class="card-body">
         <h5 class="titulo">LISTAR TARJETA</h5>
         <table class="table">
-            <tr>
-                <td>Tomas</td>
-                <td>1234123412341234</td>
-                <td>01/22</td>
+            <tr *ngFor="let tarjeta of listaTarjetas">
+                <td>{{tarjeta.titular}}</td>
+                <td>{{tarjeta.numeroDeTarjeta}}</td>
+                <td>{{tarjeta.fechaExpiracion}}</td>
                 <td><i class="fa-solid fa-pen-to-square text-info"></i></td>
                 <td><i class="fa-solid fa-trash text-danger"></i></td>
             </tr>

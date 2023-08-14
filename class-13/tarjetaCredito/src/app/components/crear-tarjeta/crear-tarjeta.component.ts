@@ -13,6 +13,8 @@ export class CrearTarjetaComponent implements OnInit {
 
   forms:FormGroup; // importada de la clase ReactiveFormsModule en app.module.ts
   loading: boolean = false;
+  titulo:string = "Agregar Tarjeta";
+  id:string | undefined; // mientras no pido los datos para editar es undefined. Luego, es string 
 
   constructor(private fb:FormBuilder, private _tarjetaService: TarjetaService, private toastr: ToastrService){
     this.forms = this.fb.group({
@@ -25,7 +27,27 @@ export class CrearTarjetaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this._tarjetaService.getTarjeta().subscribe(res => {
+      this.titulo = "Editar tarjeta";
+      this.id = res.id
+      this.forms.patchValue({
+        titular: res.titular,
+        nroTarjeta: res.numeroDeTarjeta,
+        fechaExpiracion: res.fechaExpiracion,
+        cvv: res.cvv
+      })
+      console.log(res);
+    })
+  }
+
+  guardarTarjeta(){
+    if(this.id === undefined){
+      // crear tarjeta
+      this.crearTarjeta();
+    } else {
+      // editando tarjeta
+      this.editarTarjeta(this.id);
+    }
   }
 
   crearTarjeta(){
@@ -49,6 +71,26 @@ export class CrearTarjetaComponent implements OnInit {
         this.toastr.error("Ocurrio un error", "Error");
         console.log(error);
       })
+  }
+
+  editarTarjeta(id:string){
+    const TARJETA: any = {
+      titular: this.forms.value.titular,
+      numeroDeTarjeta: this.forms.value.nroTarjeta,
+      fechaExpiracion: this.forms.value.fechaExpiracion,
+      cvv: this.forms.value.cvv,
+      fechaActualizacion: new Date()
+    }
+
+    this.loading = true;
+    this._tarjetaService.editarTarjeta(id, TARJETA)
+      .then(() => {
+        this.loading = false;
+        this.toastr.info("El registro fue actualizado con exito", "Registro actualizado")
+        this.forms.reset()
+        this.titulo = "Agregar Tarjeta"
+        this.id = undefined;
+      }, error => { this.toastr.error("Error en la actualizacion", "Error")})
   }
 
 }
